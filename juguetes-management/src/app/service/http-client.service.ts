@@ -25,4 +25,12 @@ export class HttpClientService {
     console.log("test call");
     return this.httpClient.get<Usuario[]>('http://localhost:8080/usuarios');
   }
+
+  public deleteUsuario(usuario) {
+    return this.httpClient.delete<Usuario>("http://localhost:8080/usuarios" + "/"+ usuario.usrId);
+  }
+
+  public createUsuario(usuario) {
+    return this.httpClient.post<Usuario>("http://localhost:8080/usuarios", usuario);
+  }
 }

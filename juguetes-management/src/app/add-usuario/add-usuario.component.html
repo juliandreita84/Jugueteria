@@ -1,0 +1,21 @@
+<div class="col-md-6">
+    <h2 class="text-center">Agregar Usuario</h2>
+    <form>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="nombre" [(ngModel)]="user.nombre" placeholder="Nombre" name="nombre" class="form-control" id="nombre">
+      </div>
+    
+      <div class="form-group">
+        <label for="identificacion">Identificación:</label>
+        <input [(ngModel)]="user.identificacion" placeholder="Identificación" name="identificacion" class="form-control" id="identificacion">
+      </div>
+    
+      <div class="form-group">
+        <label for="usrId">Usuario Id</label>
+        <input [(ngModel)]="user.usrId" placeholder="Usuario Id" name="Usuario Id" class="form-control" id="usuarioid">
+      </div>
+    
+      <button class="btn btn-success" (click)="createUsuario()">Crear</button>
+    </form>
+    </div>

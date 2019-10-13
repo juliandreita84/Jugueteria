@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientService } from '../service/http-client.service';
+import { HttpClientService, Usuario } from '../service/http-client.service';
 
 @Component({
   selector: 'app-usuario',
@@ -8,7 +8,7 @@ import { HttpClientService } from '../service/http-client.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  usuarios:string[];
+  usuarios:Usuario[];
    
   constructor(
     private httpClientService:HttpClientService
@@ -24,5 +24,12 @@ handleSuccessfulResponse(response)
 {
     this.usuarios=response;
 }
+
+deleteUsuario(usuario: Usuario): void {
+  this.httpClientService.deleteUsuario(usuario)
+    .subscribe( data => {
+      this.usuarios = this.usuarios.filter(u => u !== usuario);
+    })
+};
 
 }

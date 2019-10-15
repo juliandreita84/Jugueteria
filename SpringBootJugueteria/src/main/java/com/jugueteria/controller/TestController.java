@@ -23,15 +23,14 @@ public class TestController {
 
 //	private List<Usuario> usuarios = createList();
 
-	ApplicationContext springCtx = new ClassPathXmlApplicationContext("/resources/application.xml");
-
-	@Autowired
-	CamelContext context = springCtx.getBean("usuarioContext", CamelContext.class);
-
 	@GetMapping(produces = "application/json")
 	public List<Usuario> firstPage() {
 		List<Usuario> usuarios = null;
 		try {
+			ApplicationContext springCtx = new ClassPathXmlApplicationContext("camel-context.xml");
+
+			CamelContext context = springCtx.getBean("usuarioContext", CamelContext.class);
+
 			context.start();
 
 			ProducerTemplate producerTemplate = context.createProducerTemplate();
@@ -62,6 +61,10 @@ public class TestController {
 	@PostMapping
 	public Usuario create(@RequestBody Usuario user) {
 		try {
+			ApplicationContext springCtx = new ClassPathXmlApplicationContext("camel-context.xml");
+
+			CamelContext context = springCtx.getBean("usuarioContext", CamelContext.class);
+
 			context.start();
 
 			ProducerTemplate producerTemplate = context.createProducerTemplate();

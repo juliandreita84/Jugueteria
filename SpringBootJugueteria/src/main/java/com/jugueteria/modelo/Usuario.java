@@ -82,10 +82,5 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
-	@Override
-    public String toString() {
-        return "Usuario [nombre=" + nombre + ", identificacion=" + identificacion + "]";
-    }
 
 }
